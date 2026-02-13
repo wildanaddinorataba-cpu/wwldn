@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Valentine 💌</title>
+    <style>
+      :root {
+        --pink: #fb7185;
+        --pink-soft: #ffe4ef;
+        --dark: #0f172a;
+        --card: #111827;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: radial-gradient(circle at top, #fecaca 0, #111827 55%);
+        color: #f9fafb;
+      }
+
+      .glass {
+        position: relative;
+        width: 100%;
+        max-width: 960px;
+        background: rgba(15, 23, 42, 0.9);
+        border-radius: 28px;
+        padding: 32px 28px;
+        border: 1px solid rgba(248, 113, 113, 0.5);
+        box-shadow: 0 30px 80px rgba(15, 23, 42, 0.95);
+        overflow: hidden;
+      }
+
+      .glass::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background:
+          radial-gradient(circle at 10% 0, rgba(248, 113, 113, 0.16), transparent 55%),
+          radial-gradient(circle at 90% 100%, rgba(251, 113, 133, 0.35), transparent 60%);
+        opacity: 0.9;
+        pointer-events: none;
+      }
+
+      .content {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+        gap: 32px;
+        align-items: center;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          grid-template-columns: 1fr;
+        }
+
+        .glass {
+          padding: 24px 20px 26px;
+          border-radius: 22px;
+        }
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(248, 250, 252, 0.16);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #fecaca;
+        margin-bottom: 14px;
+      }
+
+      .tag-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #fb7185;
+        box-shadow: 0 0 0 6px rgba(251, 113, 133, 0.28);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2.4rem, 4vw, 3.1rem);
+        letter-spacing: -0.045em;
+        line-height: 1.1;
+      }
+
+      h1 span.highlight {
+        background: linear-gradient(135deg, #f97373, #fb7185);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .subtitle {
+        margin: 0 0 20px;
+        color: #e5e7eb;
+        font-size: 0.98rem;
+        max-width: 420px;
+      }
+
+      .subtitle strong {
+        color: #fecaca;
+        font-weight: 600;
+      }
+
+      .question-card {
+        margin-top: 22px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .question-card-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        background: radial-gradient(circle at 30% 0, #fda4af, #fb7185);
+        box-shadow: 0 14px 26px rgba(248, 113, 113, 0.7);
+      }
+
+      .question-card-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 13px;
+      }
+
+      .question-card-text span:first-child {
+        font-weight: 600;
+      }
+
+      .question-card-text span:last-child {
+        color: #9ca3af;
+        font-size: 12px;
+      }
+
+      .actions {
+        margin-top: 26px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      .btn-main {
+        border: none;
+        border-radius: 999px;
+        padding: 11px 20px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: #0f172a;
+        background: linear-gradient(135deg, #f97373, #fb7185);
+        box-shadow:
+          0 12px 25px rgba(248, 113, 113, 0.65),
+          0 0 0 1px rgba(254, 226, 226, 0.8);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-main::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 10% 0, rgba(254, 249, 195, 0.55), transparent 50%);
+        opacity: 0;
+        transition: opacity 0.25s ease-out;
+      }
+
+      .btn-main:hover::after {
+        opacity: 1;
+      }
+
+      .btn-main span.icon {
+        display: inline-flex;
+        transform: translateY(0);
+        transition: transform 0.18s ease-out;
+      }
+
+      .btn-main:hover span.icon {
+        transform: translateY(-2px) scale(1.05);
+      }
+
+      .btn-ghost {
+        border-radius: 999px;
+        padding: 9px 14px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px dashed rgba(248, 250, 252, 0.5);
+        background: rgba(15, 23, 42, 0.9);
+        color: #e5e7eb;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+      }
+
+      .btn-ghost-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: #22c55e;
+      }
+
+      .letter {
+        position: relative;
+        background: radial-gradient(circle at 20% 0, #f87171, #fb7185);
+        padding: 20px 18px;
+        border-radius: 20px;
+        color: #111827;
+        box-shadow:
+          0 24px 40px rgba(15, 23, 42, 0.75),
+          0 0 0 1px rgba(248, 250, 252, 0.6);
+        overflow: hidden;
+      }
+
+      .letter::before {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(248, 250, 252, 0.7), transparent 65%);
+        top: -120px;
+        right: -80px;
+        opacity: 0.6;
+      }
+
+      .letter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .letter-title {
+        font-weight: 700;
+        font-size: 0.98rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .heart-badge {
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f97373;
+        color: #fef2f2;
+        font-size: 13px;
+        box-shadow: 0 10px 22px rgba(185, 28, 28, 0.65);
+      }
+
+      .letter-meta {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: rgba(15, 23, 42, 0.8);
+        opacity: 0.85;
+        text-align: right;
+      }
+
+      .letter-body {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+      }
+
+      .letter-body strong {
+        font-weight: 700;
+      }
+
+      .letter-footer {
+        margin-top: 12px;
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .signature {
+        font-weight: 600;
+      }
+
+      .pill {
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.08);
+        font-size: 0.76rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .heart-floating {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .heart {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        transform: translate(-50%, -50%);
+        opacity: 0.9;
+        color: #fecaca;
+        font-size: 16px;
+        animation: float-heart 8s linear infinite;
+      }
+
+      .heart:nth-child(2) {
+        animation-delay: 1.4s;
+        transform: scale(1.1);
+      }
+
+      .heart:nth-child(3) {
+        animation-delay: 2.5s;
+        transform: scale(0.95);
+      }
+
+      @keyframes float-heart {
+        0% {
+          transform: translate(-50%, 20%) scale(0.8);
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.95;
+        }
+        60% {
+          opacity: 0.95;
+        }
+        100% {
+          transform: translate(-50%, -120%) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      .love-question {
+        margin-top: 18px;
+        padding: 14px 16px 16px;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(248, 113, 113, 0.55);
+        margin-top: 20px;
+      }
+
+      .love-question-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .love-question-title span.icon {
+        font-size: 16px;
+      }
+
+      .love-question-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .love-question-btn {
+        border-radius: 999px;
+        padding: 7px 14px;
+        font-size: 0.8rem;
+        border: 1px solid rgba(248, 250, 252, 0.3);
+        background: rgba(15, 23, 42, 0.9);
+        color: #e5e7eb;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .love-question-btn.main {
+        background: rgba(248, 113, 113, 0.15);
+        border-color: rgba(248, 113, 113, 0.8);
+      }
+
+      .love-question-answer {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: #fecaca;
+      }
+
+      .bottom-note {
+        margin-top: 18px;
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+      }
+
+      .bottom-note strong {
+        color: #fecaca;
+      }
+
+      /* Popup di dalam website */
+      .popup-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.75);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+      }
+
+      .popup-card {
+        background: radial-gradient(circle at top, #fecaca, #fb7185);
+        padding: 18px 20px 16px;
+        border-radius: 20px;
+        color: #111827;
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+        max-width: 320px;
+        width: calc(100% - 40px);
+        position: relative;
+      }
+
+      .popup-title {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        opacity: 0.85;
+        margin-bottom: 6px;
+      }
+
+      .popup-message {
+        font-size: 0.94rem;
+        font-weight: 600;
+      }
+
+      .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border-radius: 999px;
+        border: none;
+        background: rgba(15, 23, 42, 0.12);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glass">
+      <div class="heart-floating">
+        <div class="heart" style="left: 20%; animation-duration: 9s;">❤</div>
+        <div class="heart" style="left: 55%; animation-duration: 11s;">❤</div>
+        <div class="heart" style="left: 84%; animation-duration: 10s;">❤</div>
+      </div>
+
+      <div class="content">
+        <section>
+          <div class="tag">
+            <span class="tag-dot"></span>
+            VALENTINE SPECIAL
+          </div>
+
+          <h1>
+            Buat
+            <span class="highlight">sayanku cintakuu nasywa BUT sainahhh</span>.
+          </h1>
+
+          <div class="question-card">
+            <div class="question-card-icon">💘</div>
+            <div class="question-card-text">
+              <span>Mau kirim ke siapa hari ini?</span>
+              <span>Tulis nama dan pesannya, lalu kirim link ini ke dia.</span>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn-ghost" onclick="copyLoveUrl()">
+              <span class="btn-ghost-dot"></span>
+              Salin link halaman ini
+            </button>
+          </div>
+        </section>
+
+        <section>
+          <div class="letter" id="letter">
+            <div class="letter-header">
+              <div class="letter-title">
+                <div class="heart-badge">❤</div>
+                <span id="letter-to">Untuk wawaa</span>
+              </div>
+              <div class="letter-meta">
+                14 FEB · VALENTINE
+                <br />
+                cinta tanpa kadaluarsa
+              </div>
+            </div>
+
+            <div class="letter-body" id="letter-body">
+              semogaa kamuu makin sayangg samaa aqq sama tf aku seratus dong
+              maniss
+            </div>
+
+            <div class="letter-footer">
+              <div class="signature" id="letter-from">dari wildan1992</div>
+              <div class="pill">
+                <span>∞</span>
+                <span id="love-level">Level sayang: maksimal</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="love-question">
+            <div class="love-question-title">
+              <span class="icon">❓</span>
+              <span>Kamu sayang nggak sama aku??</span>
+            </div>
+            <div class="love-question-buttons">
+              <button
+                class="love-question-btn main"
+                onclick="answerLove('sayangBanget')"
+              >
+                <span>Sayang pake bangett</span>
+                <span>💓</span>
+              </button>
+              <button
+                class="love-question-btn"
+                onclick="answerLove('sayangBangetBanget')"
+              >
+                <span>Sayang pake banget banget bangettt</span>
+                <span>💞</span>
+              </button>
+            </div>
+            <div class="love-question-answer" id="love-question-answer"></div>
+          </div>
+
+          <div class="bottom-note">
+            Ubah isi surat di file <strong>index.html</strong> atau langsung
+            lewat tombol <strong>"Personalisasi surat"</strong> di atas.
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="popup-overlay" id="valentinePopup" onclick="closePopup(event)">
+      <div class="popup-card">
+        <button class="popup-close" onclick="closePopup(event)">×</button>
+        <div class="popup-title">jawaban kamu</div>
+        <div class="popup-message" id="popupMessage"></div>
+      </div>
+    </div>
+
+    <script>
+      function copyLoveUrl() {
+        const url = window.location.href;
+        navigator.clipboard
+          .writeText(url)
+          .then(function () {
+            alert("Link halaman Valentine ini sudah disalin. Tinggal kirim ke dia ♥");
+          })
+          .catch(function () {
+            alert("Gagal menyalin link. Kamu bisa salin langsung dari address bar.");
+          });
+      }
+
+      function showPopup(message) {
+        const overlay = document.getElementById("valentinePopup");
+        const msgEl = document.getElementById("popupMessage");
+        if (!overlay || !msgEl) return;
+        msgEl.textContent = message;
+        overlay.style.display = "flex";
+      }
+
+      function closePopup(event) {
+        // Jika klik di luar kartu atau di tombol X, tutup popup
+        const overlay = document.getElementById("valentinePopup");
+        if (!overlay) return;
+        if (
+          event.target === overlay ||
+          event.target.classList.contains("popup-close")
+        ) {
+          overlay.style.display = "none";
+        }
+      }
+
+      // Simpan berapa kali tiap pilihan ditekan
+      const loveClickState = {
+        sayangBanget: 0,
+        sayangBangetBanget: 0,
+      };
+
+      function answerLove(type) {
+        loveClickState[type] = (loveClickState[type] || 0) + 1;
+
+        // Klik pertama: godain dulu
+        if (loveClickState[type] === 1) {
+          showPopup("apaa?? ga sayang?? yawess 😏");
+          return;
+        }
+
+        // Klik kedua dan seterusnya: jawaban sebenarnya
+        if (type === "sayangBanget") {
+          showPopup(
+            "Yah, aku juga sayang kamu pake bangett… tapi kok rasanya masih kurang ya? 😌"
+          );
+        } else if (type === "sayangBangetBanget") {
+          showPopup(
+            "Hehehe, jawaban yang benar cuma ini. Fix, kamu nggak boleh kemana-mana ya. 🤍"
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
